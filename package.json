@@ -1,0 +1,30 @@
+{
+  "name": "goit-node.js-hw-01",
+  "version": "1.0.0",
+  "description": "G:\\GitHub\\goit-node.js-hw-01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:dev": "nodemon index"
+  },
+  "keywords": [],
+  "author": "Travellin91",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Travellin91/goit-node.js-hw-01.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Travellin91/goit-node.js-hw-01/issues"
+  },
+  "homepage": "https://github.com/Travellin91/goit-node.js-hw-01#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
