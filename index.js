@@ -1,63 +1,68 @@
-const { listContacts, getContactById, removeContact, addContact } = require('./db/contacts');
-const yargs = require('yargs');
+const {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+} = require("./db/contacts");
+const yargs = require("yargs");
 
 const argv = yargs
-  .option('action', {
-    alias: 'a',
-    describe: 'Action to perform',
-    choices: ['list', 'get', 'add', 'remove'],
+  .option("action", {
+    alias: "a",
+    describe: "Action to perform",
+    choices: ["list", "get", "add", "remove"],
     demandOption: true,
   })
-  .option('id', {
-    alias: 'i',
-    describe: 'Contact ID',
-    type: 'string',
+  .option("id", {
+    alias: "i",
+    describe: "Contact ID",
+    type: "string",
   })
-  .option('name', {
-    alias: 'n',
+  .option("name", {
+    alias: "n",
     describe: "Contact's name",
-    type: 'string',
+    type: "string",
   })
-  .option('email', {
-    alias: 'e',
+  .option("email", {
+    alias: "e",
     describe: "Contact's email",
-    type: 'string',
+    type: "string",
   })
-  .option('phone', {
-    alias: 'p',
+  .option("phone", {
+    alias: "p",
     describe: "Contact's phone",
-    type: 'string',
+    type: "string",
   })
   .help().argv;
 
 async function invokeAction({ action, id, name, email, phone }) {
   try {
     switch (action) {
-      case 'list':
+      case "list":
         const allContacts = await listContacts();
         console.table(allContacts);
         break;
 
-      case 'get':
+      case "get":
         const contactById = await getContactById(id);
-        console.log('Contact by ID:', contactById);
+        console.log("Contact by ID:", contactById);
         break;
 
-      case 'add':
+      case "add":
         const newContact = await addContact(name, email, phone);
-        console.log('New contact:', newContact);
+        console.log("New contact:", newContact);
         break;
 
-      case 'remove':
+      case "remove":
         const removedContact = await removeContact(id);
-        console.log('Removed contact:', removedContact);
+        console.log("Removed contact:", removedContact);
         break;
 
       default:
-        console.warn('\x1B[31m Unknown action type!');
+        console.warn("\x1B[31m Unknown action type!");
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 }
 
