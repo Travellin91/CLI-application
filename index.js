@@ -3,7 +3,7 @@ const {
   getContactById,
   removeContact,
   addContact,
-} = require("./db/contacts");
+} = require("./contacts.js");
 const yargs = require("yargs");
 
 const argv = yargs
